@@ -117,22 +117,13 @@ $(document).ready(function(){
                 }
                 
                 $(".view").on("click", function(e){
-                	
                 	console.dir(this);
+                	var str = this.currentSrc;
+                	var arr = str.split("=");
+                	var imgstr = arr[1];
+                	var iarr = imgstr.split("\"");
+                	console.log(iarr[0]);
                 	
-                	$.ajax({
-                    	
-                		url:"realSize",
-                		type:"post",
-                		data:{fileName:"45f8e569-671a-4463-9cb5-9b1b5f98a29e_s_1"},
-                		dataType:"Text",
-                		success:function(result){
-                			var str2="<li><img class='view' src='display?fileName="+result+"'></li>";
-                			$(".uploadList").append(str2);
-                			alert("지웠냐?");
-                		}
-                		
-                	})
                 	
                 });
                 

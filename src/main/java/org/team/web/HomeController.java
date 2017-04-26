@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.team.service.SampleService;
 
 /**
  * Handles requests for the application home page.
@@ -24,10 +27,16 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	
+	@Inject
+	private SampleService service;
+
 	// 모달 파일 업로드를 위해 추가 하였습니다.
+	//aop를 적용하지 않았을 경우 이 매소드의 클래스는 sampleserviceimpl임 
 	@GetMapping("/ex")
 	public void ex(){
+		
+		System.out.println(service.getClass().getName());
+		service.doA();
 		
 	}
 	
